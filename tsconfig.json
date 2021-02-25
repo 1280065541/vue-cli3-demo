@@ -1,40 +1,55 @@
+//指定用来编译这个项目的根文件和编译选项
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "importHelpers": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "types": [
-      "webpack-env"
-    ],
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
+    "compilerOptions": {
+        // 编译成哪个版本的js
+        "target": "esnext",
+        // 模板生成的形式，当target为es3的时候，那module默认为commonjs形式，否则为es6形式
+        "module": "esnext",
+        // 严格模式解析
+        "strict": true,
+        // 支持JSX
+        "jsx": "preserve",
+        // 是否引入tslib里的辅助工具函数，默认为false
+        "importHelpers": true,
+        // 选择模块解析策略，有node和classic
+        "moduleResolution": "node",
+        // 启动实验性的ES装饰器
+        "experimentalDecorators": true,
+        // 跳过所有声明文件的类型检查
+        "skipLibCheck": true,
+        // 通过为导入内容创建命名空间，实现commonJS和ES模块之间的互操作性
+        "esModuleInterop": true,
+        // 为false是，引入的模块必须以* as 的形式，例如import * as React from 'react'
+        "allowSyntheticDefaultImports": true,
+        // 是否默认禁用any
+        "noImplicitAny": false,
+        // 编译出的文件是否移除注释，可以减少编译出文件的体积
+        "removeComments":true,
+        // 是否生成map文件
+        "sourceMap": true,
+        // 工作根目录
+        "baseUrl": ".",
+        // 指定引入的类型声明文件，默认是自动引入所有声明文件，一旦选定该选项，则会禁用自动引入，
+        // 改为只引入指定类型的声明文件，如果指定空数组[]则不用引入任何文件
+        "types": ["webpack-env"],
+        // 指定模块的路径，和baseUrl有关联，和webpack中resolve.alias配置一样
+        "paths": {
+            "@/*": [
+                // 直接import * from '@/xxx'
+                "src/*"
+            ]
+        },
+        // 编译过程中需要引入的库文件列表
+        "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
     },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    // 指定一个匹配列表（自动指定该路径下所有的ts相关文件）
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "tests/**/*.ts",
+        "tests/**/*.tsx"
+    ],
+    // 指定一个排除列表
+    "exclude": ["node_modules"]
 }
